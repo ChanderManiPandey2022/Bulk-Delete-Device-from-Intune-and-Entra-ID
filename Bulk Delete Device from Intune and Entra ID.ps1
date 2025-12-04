@@ -90,7 +90,7 @@ foreach ($deviceName in $deviceNames) {
             Write-Host "  AzureADDeviceId    : $entraDeviceIdFromIntune" -ForegroundColor Yellow
 
             # Remove device from Intune
-            #Remove-MgDeviceManagementManagedDevice -ManagedDeviceId $intuneDevice.Id
+            Remove-MgDeviceManagementManagedDevice -ManagedDeviceId $intuneDevice.Id
             $removedFromIntune = "Yes"
             Write-Host "✔ Device removed from Intune." -ForegroundColor Green
         }
@@ -132,7 +132,7 @@ foreach ($deviceName in $deviceNames) {
             Write-Host "  Entra DeviceId   : $($exactMatch.DeviceID) " -ForegroundColor Yellow
 
             # DELETE from Entra
-            #Remove-MgDevice -DeviceId $exactMatch.Id
+            Remove-MgDevice -DeviceId $exactMatch.Id
             $removedFromEntra = "Yes"
             Write-Host "✔ Device removed from Entra." -ForegroundColor Green
         }
@@ -159,5 +159,6 @@ foreach ($deviceName in $deviceNames) {
 $logOutput | Export-Csv -Path $logPath -NoTypeInformation
 Write-Host "`nProcess complete. Log saved to: $logPath" -ForegroundColor Cyan
 Invoke-Item $logPath
+
 
 #DisConnect-MgGraph
