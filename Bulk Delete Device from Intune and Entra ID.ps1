@@ -161,4 +161,5 @@ Write-Host "`nProcess complete. Log saved to: $logPath" -ForegroundColor Cyan
 Invoke-Item $logPath
 
 
-#DisConnect-MgGraph
+DisConnect-MgGraph
+
